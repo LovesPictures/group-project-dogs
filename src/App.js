@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Favourites from "./components/Favourites";
 import RandomDog from "./components/RandomDog";
-import Dog from "./components/Dog";
+
 import DogBattle from "./components/DogBattle";
 import Breeds from "./components/Breeds";
 import "./App.css";
@@ -10,8 +10,7 @@ export default function App() {
   const [favouriteBreeds, setFavouriteBreeds] = useState([]);
   const [savedPhotos, setSavedPhotos] = useState([]);
   const [randomDogImage, setRandomDogImage] = useState("");
-  const [bestDogImage, setBestDogImage] = useState([]);
-  const [image, setImage] = useState([]);
+  
 
 
   const getNewDogImage = () => {
@@ -33,19 +32,7 @@ export default function App() {
     console.log(savedPhotos);
   };
 
-// const randomImage = 
-  const chooseBestDog = () => {
-    fetch(`https://dog.ceo/api/breed/${bestDogImage}/images/random`)
-      // .then((response) => response.json())
-      .then((response) => console.log(response.json()))
-      .then((bestDogImagedata) => {
-        setBestDogImage(bestDogImagedata.message);
-      });
-      
-  }
-useEffect(()=>{
-  chooseBestDog()
-}, []);
+
 
   return (
     <div className="App">
@@ -58,10 +45,8 @@ useEffect(()=>{
         savePhotos={saveDogImage}
         handleNextImage={getNewDogImage}
       />
-      <Dog 
-      dogImage={image}
-      handleBestDogImage={chooseBestDog} />
-      <DogBattle bestDogImage={bestDogImage} />
+    
+      <DogBattle />
       <Breeds />
     </div>
   );
