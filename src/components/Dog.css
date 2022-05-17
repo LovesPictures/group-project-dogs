@@ -8,7 +8,7 @@
   display: inline-block;
   border: none;
   border-radius: 3px;
-  background: #49bae0;
+  background: #1e4755;
   padding: 0.5em 1em;
   color: #fff;
   cursor: pointer;
@@ -17,4 +17,12 @@
 .Dog-button:hover,
 .Dog-button:focus {
   background: #54cbf3;
+}
+
+.count {
+  font-weight: bold;
+  align-items: center;
+  width: 10px;
+  padding: 10px;
+  font-size: 14px;
 }
