@@ -2,8 +2,6 @@ import React, { useEffect, useState } from "react";
 import "./RandomDog.css";
 
 export default function RandomDog(props) {  /* RandomDog */
-
-
   
     return (
       <div className="RandomDog">
@@ -13,7 +11,7 @@ export default function RandomDog(props) {  /* RandomDog */
         <p>
 
 
-  {/* Save Image  ~  from App.js*/}
+  {/* Save Image  ~   button */}
         <button className="RandomDog-button" 
         //this is calling the function 
           // onClick={props.handleSavedImage}>
@@ -24,9 +22,8 @@ export default function RandomDog(props) {  /* RandomDog */
 
 
 
- {/* RandomDog-image  ~  from App.js */}          
+ {/* RandomDog-image  ~  button */}          
           <button className="RandomDog-button"
-           
           //calling the function here 
               onClick={() => props.handleNextImage()}>
               Next Dog

@@ -44,7 +44,6 @@ export default function Breeds() {
          onChange={(event) =>  {
 
     const breed = event.target.value 
-
     setDogBreed(breed)
 
         fetch(`https://dog.ceo/api/breed/${breed}/images/random`)/* New image in response to the onchange event*/
