@@ -6,11 +6,22 @@ import Breeds from "./components/Breeds";
 import "./App.css";
 
 export default function App() {
-  // 1 variables for the breeds and for the pictures
   const [favouriteBreeds, setFavouriteBreeds] = useState([]);
   const [savedPhotos, setSavedPhotos] = useState([]);
   const [dogImage, setDogImage] = useState(null); /* define image data 1 */
   const [bestDogImage, setBestDogImage] = useState(null); /*  */
+  const [listOfDogBreeds, setListOfDogBreeds] = useState([]);
+
+  /*Breeds for  */
+  useEffect(() => {
+    fetch("https://dog.ceo/api/breeds/list/all")
+        .then((response) => response.json())      
+        .then((data) => { 
+         setListOfDogBreeds(Object.keys(data.message)) /* dot notation  object.keys (message property in this case ) ?  Freecodecamp */
+      })
+      .catch((error) => console.error("Type of Error:", error ));
+    }, []);
+ 
 
   //for dogBattle
 const handleBestDogImage = () => {
@@ -37,8 +48,6 @@ useEffect(() => {
 
 //2 saved image ------------------------------------------------------
 const handleSavedImage = () => {
-//  console.log("handleSavedImage anything here?")
-//  console.log(dogImage)
 // update state - to setSavedPhoto 
  //...copy of the dog image with the spread operator 
  // argument 1 is photo 1, following argument updates the following image   
@@ -55,7 +64,8 @@ const handleSavedImage = () => {
       <Favourites savedPhotos={savedPhotos}/>
       <RandomDog  handleSavedImage ={handleSavedImage} handleNextImage ={handleNextImage} dogImage = {dogImage}/>
       <DogBattle handleBestDogImage ={handleBestDogImage} bestDogImage={bestDogImage} />
-      <Breeds />
+      {/* delay loading the first image until the fetch ios complete then, check if the .length of the array is above 0. Then complete right side of the evaluation */}
+      {listOfDogBreeds.length > 0 && <Breeds listOfDogBreeds={listOfDogBreeds} />}
     </div>
   );
 }

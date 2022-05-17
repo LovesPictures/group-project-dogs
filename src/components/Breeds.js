@@ -1,24 +1,9 @@
 import React, { useEffect, useState } from "react";
 import "./Breeds.css";
 
-export default function Breeds() {
-  const [data, setData] = useState([]);   /* All breeds */
-
+export default function Breeds(props) {
   const [dogImage, setDogImage] = useState(null); /* image data 1 */
-  const [dogBreed, setDogBreed ] = useState(null); /* Breed */
-
-  /*Breeds data 1 */
-    useEffect(() => {
-    fetch("https://dog.ceo/api/breeds/list/all")
-        .then((response) => response.json())      
-        .then((data) => { 
-          const listOfBreeds = Object.keys(data.message)
-          setData(listOfBreeds) /* dot notation  object.keys (message property in this case ) ?  Freecodecamp */
-          const firstBreed = listOfBreeds[0]  /* get first position in the array of breeds*/
-          setDogBreed(firstBreed)
-      })
-      .catch((error) => console.error("Type of Error:", error ));
-    }, []);
+  const [dogBreed, setDogBreed ] = useState(props.listOfDogBreeds[0]); /* Breed */
 
  
  /* image data 1 */
@@ -27,7 +12,7 @@ export default function Breeds() {
           .then((response) => response.json())      
           .then((dogImagedata) => { 
           setDogImage(dogImagedata.message)
-      console.log(dogImagedata)
+      // console.log(dogImagedata)
     })
     .catch((error) => console.error("Type of Error:", error ));
   }, [dogBreed]); /* effect depends on dogBreed - runs each time?*/
@@ -55,7 +40,7 @@ export default function Breeds() {
     })
         }}
         >
-          {data.map((breed) => (
+          {props.listOfDogBreeds.map((breed) => (
             <option key={breed}>{breed}</option>
           ))}
         </select>

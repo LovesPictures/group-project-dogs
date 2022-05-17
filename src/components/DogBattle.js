@@ -15,12 +15,12 @@ export default function DogBattle(props) {
       {/* calling Dog function in Dog.js - updated with the image API call  */}
         <Dog handleBestDogImage = {props.handleBestDogImage} 
         //props from teh API
-        bestDogImage = {props.bestDogImage}/>
+        bestDogImage = {props.bestDogImage} image="http://via.placeholder.com/300x300"/>
         
         {/* { props.dogImage && <img className="RandomDog-image" src={props.dogImage} alt="an image of a dog" ></img>} new image */}
 
         {/* <Dog image= "./300x300.png" /> */}
-        {/* <Dog image="http://via.placeholder.com/300x300" /> */}
+        <Dog image="http://via.placeholder.com/300x300" />
       </div>
     </div>
   );
