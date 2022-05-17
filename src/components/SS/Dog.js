@@ -25,11 +25,7 @@ export default function Dog (props) {
     else setCount(countContent);
   }
 
-
 // select a random dog image - dogBattle
-  // {props.dogImage && <img className="RandomDog-image" src={props.dogImage} alt="an image of a dog" ></img>} {/* new image */}
-
-
   return (
     // to dogBattle +
     <div className="Dog">
