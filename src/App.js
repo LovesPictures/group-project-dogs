@@ -62,9 +62,11 @@ const handleSavedImage = () => {
       </header>
       
       <Favourites savedPhotos={savedPhotos}/>
+      {/* RandomDog.js */}
       <RandomDog  handleSavedImage ={handleSavedImage} handleNextImage ={handleNextImage} dogImage = {dogImage}/>
+      {/* DogBattle.js */}
       <DogBattle handleBestDogImage ={handleBestDogImage} bestDogImage={bestDogImage} />
-      {/* delay loading the first image until the fetch ios complete then, check if the .length of the array is above 0. Then complete right side of the evaluation */}
+      {/* Breed.js - randomDogs.js -  delay loading the first image until the fetch ios complete then, check if the .length of the array is above 0. Then complete right side of the evaluation */}
       {listOfDogBreeds.length > 0 && <Breeds listOfDogBreeds={listOfDogBreeds} />}
     </div>
   );
