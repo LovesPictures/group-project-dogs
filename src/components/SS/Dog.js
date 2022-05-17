@@ -2,7 +2,7 @@ import React,{ useState } from "react";
 import "./Dog.css";
 
 
-export default function Dog(props) {
+export default function Dog (props) {
   const [message, setMessage] = useState("Hello!");
   const [count, setCount] = useState(0);
 
@@ -13,6 +13,7 @@ export default function Dog(props) {
   }
   function decrease() {
     //guard clause check 
+
     if (count <= 0) return;
     setCount(count - 1);
     setMessage("unlike 💔");
@@ -26,28 +27,29 @@ export default function Dog(props) {
 
 
 // select a random dog image - dogBattle
-  {props.dogImage && <img className="RandomDog-image" src={props.dogImage} alt="an image of a dog" ></img>} {/* new image */}
+  // {props.dogImage && <img className="RandomDog-image" src={props.dogImage} alt="an image of a dog" ></img>} {/* new image */}
 
 
   return (
+    // to dogBattle +
     <div className="Dog">
-      <img className="Dog-image" src={props.image} />
-
+    
+      {/* <img className="Dog-image" src={props.image} /> */}
+      <img className="Dog-image" src={props.bestDogImage} /> 
 
 {/* select a best dog  */}
      
       <button className="RandomDog-button"           
-           //calling the function here 
-               onClick={() => props.handleNextImage()}>
+           //calling the function here from DogBattle
+               onClick={() => props.handleBestDogImage()}>
                Best Dog
            </button>
 
 
       <p>
         {/* <button className="Dog-button">Best Dog</button> */}
-
         {/* 1 voting for the best breed */}
-      <button className="Dog-button" style={{backgroundColor:"#2d728a"}} onClick={decrease}>💔 unlike </button>
+      <button className="Dog-button" onClick={decrease}>💔 unlike </button>
       <span className='count' contentEditable='true' onBlur={onCountEdit}>{count}</span>
       <button className="Dog-button" onClick={increase}>❤️ like </button>  
       </p>
@@ -55,4 +57,3 @@ export default function Dog(props) {
   );
 }
 
-// export default Dog;

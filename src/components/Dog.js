@@ -38,7 +38,7 @@ export default function Dog(props) {
      
       <button className="RandomDog-button"           
            //calling the function here 
-               onClick={() => props.handleNextImage()}>
+               onClick={() => props.handleBestDogImage()}>
                Best Dog
            </button>
 

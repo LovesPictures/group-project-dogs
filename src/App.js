@@ -10,13 +10,22 @@ export default function App() {
   const [favouriteBreeds, setFavouriteBreeds] = useState([]);
   const [savedPhotos, setSavedPhotos] = useState([]);
   const [dogImage, setDogImage] = useState(null); /* define image data 1 */
+  const [bestDogImage, setBestDogImage] = useState(null); /*  */
 
+  //for dogBattle
+const handleBestDogImage = () => {
+    fetch(`https://dog.ceo/api/breeds/image/random`)
+    .then((response) => (response.json()))  
+    .then((data) => { 
+      setBestDogImage(data.message) 
+  })
+   .catch((error) => console.error("Type of Error:", error ));
+  }
 
 //Next image  -------------------------------------------------------
 const handleNextImage = () => {
   fetch(`https://dog.ceo/api/breeds/image/random`)
   .then((response) => (response.json()))  
-  //  (response.json(); console.log(response.json)))
   .then((data) => { 
     setDogImage(data.message) 
 })
@@ -45,7 +54,7 @@ const handleSavedImage = () => {
       
       <Favourites savedPhotos={savedPhotos}/>
       <RandomDog  handleSavedImage ={handleSavedImage} handleNextImage ={handleNextImage} dogImage = {dogImage}/>
-      <DogBattle handleNextImage ={handleNextImage} />
+      <DogBattle handleBestDogImage ={handleBestDogImage} bestDogImage={bestDogImage} />
       <Breeds />
     </div>
   );

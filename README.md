@@ -22,7 +22,7 @@ DogBattle
 ![Screenshot of project](DogBattle.png)
 - Show two pictures of dogs in the "Choose the best dog" panel. 
 - Each picture should come from a different dog breed. 
-- When the user selects a "Best Dog", it should treat it like a "vote" for that dog breed.   (this involve a counter?)
+- When the user selects a "Best Dog", it should treat it like a "vote" for that dog breed.   
 - (Display how many "votes") each dog breed gets below the images.
 
 SelectABreed
