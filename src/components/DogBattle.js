@@ -4,23 +4,28 @@ import "./DogBattle.css";
 
 export default function DogBattle(props) {
 
-  // select a random dog image - dogBattle
-  // {props.dogImage && <img className="RandomDog-image" src={props.dogImage} alt="an image of a dog" ></img>} {/* new image */}
+
 
   return (
     <div className="DogBattle">
       <h2 className="DogBattle-title">Choose the best dog</h2>
       <div className="DogBattle-images">
+        {/*Calling function Dog, Dog.js API - updated with the image API call   --------*/}
+        <Dog
+          // Image data: onClick from App.js to Dog.js ----------------------------------------
+          handleBestDogImage={props.handleBestDogImage}
+          // Image data: passed as props from App.js ----------------------------------------
+          bestDogImage={props.bestDogImage}
+          //set placeholder image ?? image="./80x80.png"
+        />
+        <Dog
+          image="http://via.placeholder.com/300x300"
+          handleBestDogImage={props.handleBestDogImage}
+          bestDogImage={props.bestDogImage}
+        />
 
-      {/* calling Dog function in Dog.js - updated with the image API call  */}
-        <Dog handleBestDogImage = {props.handleBestDogImage} bestDogImage = {props.bestDogImage} image="http://via.placeholder.com/300x300"/>
-        
-        <Dog handleBestDogImage = {props.handleBestDogImage} bestDogImage = {props.bestDogImage} image="http://via.placeholder.com/300x300"/>
-
-        {/* <Dog image= "./300x300.png" /> */}
         {/* <Dog image="http://via.placeholder.com/300x300" /> */}
       </div>
     </div>
   );
 }
-//bestDogImage

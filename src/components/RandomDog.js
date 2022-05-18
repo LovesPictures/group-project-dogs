@@ -1,34 +1,34 @@
 import React, { useEffect, useState } from "react";
 import "./RandomDog.css";
 
-export default function RandomDog(props) {  /* RandomDog */
-  
-    return (
-      <div className="RandomDog">
-        <h2 className="RandomDog-title">Random Dogs</h2>
-        {/* <img className="RandomDog-image" src="http://via.placeholder.com/300x300" /> */}        
-        {props.dogImage && <img className="RandomDog-image" src={props.dogImage} alt="an image of a dog" ></img>} {/* new images (breed) */}
-        <p>
+export default function RandomDog(props) {
+  /* RandomDog */
 
-
-  {/* Save Image  ~  from App.js*/}
-        <button className="RandomDog-button" 
-        //this is calling the function 
+  return (
+    <div className="RandomDog">
+      <h2 className="RandomDog-title">Random Dogs</h2>
+      {/* <img className="RandomDog-image" src="http://via.placeholder.com/300x300" /> */}
+      {props.dogImage && (
+        <img className="RandomDog-image" src={props.dogImage} alt="an image of a dog"></img>
+      )}{" "}
+      {/* new images (breed) */}
+      <p>
+        {/*Image Data: Save Image from handleSavedImage, App.js API   ---------------*/}
+        <button
+          className="RandomDog-button"
+          //call the function
           onClick={() => props.handleSavedImage()}>
           Save Image
-            </button>
+        </button>
 
- {/* RandomDog-image  ~  from App.js */}          
-          <button className="RandomDog-button"
-           
-          //calling the function here  - new file 
-              onClick={() => props.handleNextImage()}>
-              Next Dog
-          </button>
-
-        </p>
-      </div>
-    )}
-
-
-
+        {/* /*Breeds data:  Next image from handleNextImage App.js API   --------------*/}
+        <button
+          className="RandomDog-button"
+          //call the function
+          onClick={() => props.handleNextImage()}>
+          Next Dog
+        </button>
+      </p>
+    </div>
+  );
+}
