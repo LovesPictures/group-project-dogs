@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./Dog.css";
 
 export default function Dog(props) {
+  
   const [message, setMessage] = useState("Hello!");
   const [count, setCount] = useState(0);
 
@@ -44,7 +45,7 @@ export default function Dog(props) {
         <button className="Dog-button" onClick={decrease}>
           💔 unlike{" "}
         </button>
-        <span className="count" contentEditable="true" onBlur={onCountEdit}>
+        <span className="count" onBlur={onCountEdit}>
           {count}
         </span>
         <button className="Dog-button" onClick={increase}>

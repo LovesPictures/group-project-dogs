@@ -1,7 +1,10 @@
+
+/* use flex box */
 .Dog-image {
   max-width: 300px;
   height: auto;
   border-radius: 0.5em;
+  max-height: 300px;
 }
 
 .Dog-button {
@@ -11,8 +14,7 @@
   background: #1e4755;
   padding: 0.5em 1em;
   color: #fff;
-  cursor: pointer;
-  width: 100px;
+  cursor: pointer;  
 }
 
 .Dog-button:hover,

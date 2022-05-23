@@ -9,9 +9,10 @@ export default function App() {
   const [favouriteBreeds, setFavouriteBreeds] = useState([]);
   const [savedPhotos, setSavedPhotos] = useState([]);
   const [dogImage, setDogImage] = useState(null); /* define image data 1 */
-  const [bestDogImage, setBestDogImage] = useState(null); /*  */
+  const [bestDogImages, setBestDogImages] = useState([]); /*  */
   const [listOfDogBreeds, setListOfDogBreeds] = useState([]);
 
+  //redo this so the use effect is outside the function 
   /*Breeds list data, to be passed as props to ?  -----------------------------------*/
   useEffect(() => {
     fetch("https://dog.ceo/api/breeds/list/all")
@@ -24,15 +25,17 @@ export default function App() {
       .catch((error) => console.error("Type of Error:", error));
   }, []);
 
-  /*Image data: passed as props to randomDog.js ?   ----------------------------------------------*/
-  const handleBestDogImage = () => {
-    fetch(`https://dog.ceo/api/breeds/image/random`)
+//function to return n best dog photos = if the number is greater 50 throw an error 
+  /*Image data: passed as props to randomDog.js ?   ----------------------------------*/
+  const handleBestDogImages = () => {
+    fetch(`https://dog.ceo/api/breeds/image/random/3`)
       .then((response) => response.json())
       .then((data) => {
-        setBestDogImage(data.message);
+        setBestDogImages(data.message);
       })
       .catch((error) => console.error("Type of Error:", error));
   };
+
 
   /*Breeds data: Next image, to be passed as props to randomDog.js ?  --------------*/
   const handleNextImage = () => {
@@ -45,8 +48,10 @@ export default function App() {
   };
   useEffect(() => {
     handleNextImage();
+    handleBestDogImages();
   }, []);
 
+  
   /*Saved Image, to be passed as props to RandomDog.js ?  -----------------------------*/
   const handleSavedImage = () => {
     // update state - to setSavedPhoto
@@ -65,7 +70,6 @@ export default function App() {
       </header>
 
       <Favourites savedPhotos={savedPhotos} />
-      {/* RandomDog.js */}
       <RandomDog
         handleSavedImage={handleSavedImage}
         handleNextImage={handleNextImage}
@@ -73,8 +77,8 @@ export default function App() {
       />
       {/* DogBattle.js */}
       <DogBattle 
-      handleBestDogImage={handleBestDogImage} 
-      bestDogImage={bestDogImage} />
+      handleBestDogImages={handleBestDogImages} 
+      bestDogImage={bestDogImages} />
       {/* Breed.js - randomDogs.js -  delay loading the first image until the fetch is complete then, 
       check if the .length of the array is above 0. Then complete right side of the evaluation */}
       {listOfDogBreeds.length > 0 && <Breeds listOfDogBreeds={listOfDogBreeds} />}

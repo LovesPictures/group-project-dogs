@@ -11,7 +11,6 @@ export default function RandomDog(props) {
       {props.dogImage && (
         <img className="RandomDog-image" src={props.dogImage} alt="an image of a dog"></img>
       )}{" "}
-      {/* new images (breed) */}
       <p>
         {/*Image Data: Save Image from handleSavedImage, App.js API   ---------------*/}
         <button

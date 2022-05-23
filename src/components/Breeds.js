@@ -22,7 +22,7 @@ export default function Breeds(props) {
     <div className="Breeds">
       <h2 className="Breeds-title">Select a Breed</h2>
 
-      {/* select dropdown  */}
+      {/* select dropdown  -----------------------------*/}
       <p>
         <select
           className="Breeds-select"
@@ -31,13 +31,10 @@ export default function Breeds(props) {
 
             setDogBreed(breed);
 
-            fetch(
-              `https://dog.ceo/api/breed/${breed}/images/random`
-            ) /* New image in response to the onchange event*/
+            fetch(`https://dog.ceo/api/breed/${breed}/images/random`) /* New image in response to the onchange event*/
               .then((response) => response.json())
               .then((dogImagedata) => {
                 setDogImage(dogImagedata.message);
-                // console.log(dogImagedata) - remove from production code
               });
           }}>
           {props.listOfDogBreeds.map((breed) => (
@@ -46,20 +43,18 @@ export default function Breeds(props) {
         </select>
       </p>
 
-      {/* Show me more! button  */}
+      {/* Show me more! button  -----------------------------*/}
       <div>
         {/* <img className="Breeds-image" src="http://via.placeholder.com/300x300" /> */}
         {dogImage && (
           <img className="Breeds-image" src={dogImage} alt="an image of a dog"></img>
         )}{" "}
-        {/* new images (breed)  */}
+       
         <p>
           <button
             className="Breeds-button"
             onClick={() =>
-              fetch(
-                `https://dog.ceo/api/breed/${dogBreed}/images/random`
-              ) /* responding the the onchange event  */
+              fetch(`https://dog.ceo/api/breed/${dogBreed}/images/random`) /* responding the the onchange event  */
                 .then((response) => response.json())
                 .then((dogImagedata) => {
                   setDogImage(dogImagedata.message);
