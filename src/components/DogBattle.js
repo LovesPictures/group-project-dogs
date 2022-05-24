@@ -13,14 +13,15 @@ export default function DogBattle(props) {
         {/*Calling function Dog, Dog.js API - updated with the image API call   --------*/}
         <Dog
           // Image data: onClick from App.js to Dog.js ----------------------------------------
-          handleBestDogImage={props.handleBestDogImages}
+          //replace index 0 show the new element 
+          handleBestDogImage={() => {props.handleBestDogImages(0)}}
           // Image data: passed as props from App.js ----------------------------------------
           bestDogImage={props.bestDogImage[0]}
           //set placeholder image ?? image="./80x80.png"
         />
         <Dog
-          image="http://via.placeholder.com/300x300"
-          handleBestDogImage={props.handleBestDogImages}
+          // image="http://via.placeholder.com/300x300"
+          handleBestDogImage={() => {props.handleBestDogImages(1)}}
           bestDogImage={props.bestDogImage[1]}
         />
 

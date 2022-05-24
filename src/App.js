@@ -11,6 +11,7 @@ export default function App() {
   const [dogImage, setDogImage] = useState(null); /* define image data 1 */
   const [bestDogImages, setBestDogImages] = useState([]); /*  */
   const [listOfDogBreeds, setListOfDogBreeds] = useState([]);
+  // const [scoreBoard, setScoreBoard] = useState({}); // empty object to start leader board score
 
   //redo this so the use effect is outside the function 
   /*Breeds list data, to be passed as props to ?  -----------------------------------*/
@@ -25,13 +26,39 @@ export default function App() {
       .catch((error) => console.error("Type of Error:", error));
   }, []);
 
+
+/* const scoreBoard = {
+//   hound: 22,
+//   husky: 3,
+// }
+create a leader board where the 
+key is the breed 
+value is the score
+currently in handleBestDogImages it only returns the image 
+refactor the https://dog.ceo/api/breed/${breed}/images/random dogs API call in "select a Breed" component in the App.js
+pass it as a prop to both "select a Breed" and the "dogBattle" component
+May use 1 like button or none 
+
+*/
 //function to return n best dog photos = if the number is greater 50 throw an error 
   /*Image data: passed as props to randomDog.js ?   ----------------------------------*/
-  const handleBestDogImages = () => {
+  const handleBestDogImages = (dogIndex) => {
     fetch(`https://dog.ceo/api/breeds/image/random/3`)
       .then((response) => response.json())
       .then((data) => {
-        setBestDogImages(data.message);
+        // console.log(data.message)
+        //newdogs array to select different images to passed to dogBattle, if the first is undefined
+        if (dogIndex === undefined) {
+          setBestDogImages(data.message) 
+          return
+        }
+        //update the score in dogBattle
+        console.log({bestDogImages})
+        //update images in dogBattle
+        const newDogs = [...bestDogImages]
+        newDogs[dogIndex] = data.message[0]
+        setBestDogImages(newDogs);
+
       })
       .catch((error) => console.error("Type of Error:", error));
   };
