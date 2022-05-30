@@ -9,13 +9,22 @@ export default function Favourites(props) {
         props.savedPhotos[num]
       : "./80x80.png";
   };
-
+ //transform the shape of the data 
+//  console.log(props.scoreBoard);
+// console.log(Object.entries(props.scoreBoard));
+const displayScoreboard = () => {
+ for (const [key, value] of Object.entries(props.scoreBoard)) {
+   
+  return <p>{(`${key}: ${value}`)}</p>
+  //loop and render elements in an object in the array
+  //map?
+}}
   return (
     <div className="Favourites">
       <div className="Favourites-breeds">
         <h2>Favourite Breeds</h2>
-        <p>???</p>
-        <p>???</p>
+        {/* <p>{props.scoreBoard.hound}</p> */}
+        {displayScoreboard()}
       </div>
 
       {/* 3 saved image ------------------------------------- */}
