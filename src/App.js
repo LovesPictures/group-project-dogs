@@ -13,8 +13,8 @@ export default function App() {
   const [dogImage, setDogImage] = useState(null); /* define image data 1 */
   const [bestDogImages, setBestDogImages] = useState([]); /*  */
   const [listOfDogBreeds, setListOfDogBreeds] = useState([]);
-  //use react state for hard code, empty if using API 
-  const [scoreBoard, setScoreBoard] = useState({ hound: 22, husky: 3}); // empty object to start leader board score
+  //use react state for hard code, empty if using API
+  const [scoreBoard, setScoreBoard] = useState({ Airedale: 33, Hound: 22, Husky: 3, Bouvier: 20 }); // empty object to start leader board score
 
   //redo this so the use effect is outside the function
   /*Breeds list data, to be passed as props to ?  -----------------------------------*/
@@ -29,20 +29,22 @@ export default function App() {
       .catch((error) => console.error("Type of Error:", error));
   }, []);
 
-//   const scoreBoard = {
-//   hound: 22,
-//   husky: 3
-// }
+  //   const scoreBoard = {
+  //   Airedale:3, 
+      //  Hound: 22, 
+      //  Husky: 3, 
+      //  Bouvier: 20
+  // }
 
-// in thw background props is an empty object
-const props = {
- savedPhotos: () => {
-  //  logic in here for saved photos
- },
- scoreBoard: {hound: 22, husky: 3}
-}
+  // in thw background props is an empty object
+  // const props = {
+  //  savedPhotos: () => {
+  //   //  logic in here for saved photos
+  //  },
+  //  scoreBoard: {hound: 22, husky: 3}
+  // }
 
- /*
+  /*
 create a leader board where the 
 key is the breed 
 value is the score
@@ -53,12 +55,14 @@ pass it as a prop to both "select a Breed" and the "dogBattle" component
 May use 1 like button or none 
 
 hard code first 
-Filter the API 15 random dogs later
+pass props to the component 
+check props are working with console log 
 Sort array by descending vote 
-check the output with console log 
-Filter top 5 dogs 
 Render the dog names on the page 
+Filter top 5 dogs 
 update the scoreboard
+
+Filter the API 15 random dogs later
 
 */
   //function to return n best dog photos = if the number is greater 50 throw an error
@@ -114,7 +118,7 @@ update the scoreboard
         <h1 className="App-title">Dogs! </h1>
       </header>
 
-      <Favourites savedPhotos={savedPhotos} scoreBoard={scoreBoard}/>
+      <Favourites savedPhotos={savedPhotos} scoreBoard={scoreBoard} />
       <RandomDog
         handleSavedImage={handleSavedImage}
         handleNextImage={handleNextImage}
