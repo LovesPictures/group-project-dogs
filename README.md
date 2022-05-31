@@ -12,6 +12,13 @@ Favorites
 
 - At the top, replace the ??? with a list of the top five dog breeds according to how many "votes" they get in the "Choose the best dog" panel.
 - Allow the user to select _any_ breed in the "Select a Breed" panel by loading all the possible breeds from the API. 
+### Approach 
+Hard coded the function first and used methods: 
+- Object.entries(), 
+- .sort()  
+- .push() 
+
+Next Step to replace with an API call
 
 RandomDogs
 ![Screenshot of project](RandomDogs.png)
