@@ -65,7 +65,7 @@ export default function Breeds(props) {
               //     setDogImage(dogImagedata.message);
               //     // console.log(dogImagedata) - remove from production code
               //   })
-            {}}>
+            }>
             Show me more!
           </button>
         </p>
