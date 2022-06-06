@@ -30,12 +30,13 @@ export default function Breeds(props) {
             const breed = event.target.value;
 
             setDogBreed(breed);
-
-            fetch(`https://dog.ceo/api/breed/${breed}/images/random`) /* New image in response to the onchange event*/
-              .then((response) => response.json())
-              .then((dogImagedata) => {
-                setDogImage(dogImagedata.message);
-              });
+            //updated 2
+            props.getImageOfSelectedBreed(breed);
+            // fetch(`https://dog.ceo/api/breed/${breed}/images/random`) /* New image in response to the onchange event*/
+            //   .then((response) => response.json())
+            //   .then((dogImagedata) => {
+            //     setDogImage(dogImagedata.message);
+            //   });
           }}>
           {props.listOfDogBreeds.map((breed) => (
             <option key={breed}>{breed}</option>
@@ -49,18 +50,22 @@ export default function Breeds(props) {
         {dogImage && (
           <img className="Breeds-image" src={dogImage} alt="an image of a dog"></img>
         )}{" "}
-       
         <p>
           <button
             className="Breeds-button"
             onClick={() =>
-              fetch(`https://dog.ceo/api/breed/${dogBreed}/images/random`) /* responding the the onchange event  */
-                .then((response) => response.json())
-                .then((dogImagedata) => {
-                  setDogImage(dogImagedata.message);
-                  // console.log(dogImagedata) - remove from production code
-                })
-            }>
+
+
+             props.getImageOfDogBreed(breed);
+              // fetch(
+              //   `https://dog.ceo/api/breed/${dogBreed}/images/random`
+              // ) /* responding the the onchange event  */
+              //   .then((response) => response.json())
+              //   .then((dogImagedata) => {
+              //     setDogImage(dogImagedata.message);
+              //     // console.log(dogImagedata) - remove from production code
+              //   })
+            {}}>
             Show me more!
           </button>
         </p>

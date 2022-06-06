@@ -30,10 +30,10 @@ export default function App() {
   }, []);
 
   //   const scoreBoard = {
-  //   Airedale:3, 
-      //  Hound: 22, 
-      //  Husky: 3, 
-      //  Bouvier: 20
+  //   Airedale:3,
+  //  Hound: 22,
+  //  Husky: 3,
+  //  Bouvier: 20
   // }
 
   // in thw background props is an empty object
@@ -63,8 +63,33 @@ Filter top 5 dogs
 update the scoreboard
 
 Filter the API 15 random dogs later
-
 */
+
+  //getImageOfSelectedBreed pass to breeds dropdown 
+  const getImageOfSelectedBreed = (breed) => {
+    fetch(
+      `https://dog.ceo/api/breed/${breed}/images/random`
+    ) /* New image in response to the onchange event*/
+      .then((response) => response.json())
+      .then((dogImagedata) => {
+        setDogImage(dogImagedata.message);
+
+        // console.log("getImageOfSelectedBreed");
+      });
+  };
+
+  // getImageOfDogBreed pass to breeds image area
+  const getImageOfDogBreed = () => {
+    fetch(
+      `https://dog.ceo/api/breed/${dogBreed}/images/random`
+    ) /* responding the the onchange event  */
+      .then((response) => response.json())
+      .then((dogImagedata) => {
+        setDogImage(dogImagedata.message);
+        // console.log(dogImagedata) - remove from production code
+      });
+  };
+
   //function to return n best dog photos = if the number is greater 50 throw an error
   /*Image data: passed as props to randomDog.js ?   ----------------------------------*/
   const handleBestDogImages = (dogIndex) => {
@@ -97,6 +122,7 @@ Filter the API 15 random dogs later
       .catch((error) => console.error("Type of Error:", error));
   };
   useEffect(() => {
+    // do this after the render/ update of the component
     handleNextImage();
     handleBestDogImages();
   }, []);
@@ -124,11 +150,20 @@ Filter the API 15 random dogs later
         handleNextImage={handleNextImage}
         dogImage={dogImage}
       />
+
       {/* DogBattle.js */}
       <DogBattle handleBestDogImages={handleBestDogImages} bestDogImage={bestDogImages} />
       {/* Breed.js - randomDogs.js -  delay loading the first image until the fetch is complete then, 
-      check if the .length of the array is above 0. Then complete right side of the evaluation */}
-      {listOfDogBreeds.length > 0 && <Breeds listOfDogBreeds={listOfDogBreeds} />}
+      check if the .length of the array is above 0. Then complete right side of the evaluation - passing the function getImageOfSelectedBreed*/}
+      {listOfDogBreeds.length > 0 && (
+        <Breeds
+          listOfDogBreeds={listOfDogBreeds}
+          // passing the function getImageOfSelectedBreed
+          getImageOfSelectedBreed={(breed) => getImageOfSelectedBreed(breed)}
+          // passing the function to Breeds.js
+          getImageOfDogBreed={(breed) => getImageOfDogBreed(breed)}
+        />
+      )}
     </div>
   );
 }
