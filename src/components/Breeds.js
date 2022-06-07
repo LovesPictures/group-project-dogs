@@ -53,10 +53,13 @@ export default function Breeds(props) {
         <p>
           <button
             className="Breeds-button"
-            onClick={() =>
-
-
-             props.getImageOfDogBreed(breed);
+            onClick={() => {
+              //pointing to a new url image promise
+              const newImage = props.getImageOfDogBreed(dogBreed);
+                newImage.then((image) => {
+                    setDogImage(image); 
+                });
+            
               // fetch(
               //   `https://dog.ceo/api/breed/${dogBreed}/images/random`
               // ) /* responding the the onchange event  */
@@ -65,7 +68,7 @@ export default function Breeds(props) {
               //     setDogImage(dogImagedata.message);
               //     // console.log(dogImagedata) - remove from production code
               //   })
-            }>
+            }}>
             Show me more!
           </button>
         </p>
