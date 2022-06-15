@@ -77,7 +77,7 @@ Filter the API 15 random dogs later
         // console.log("getImageOfSelectedBreed");
       });
   };
-
+//To do random dog dropdown and select a breed are connected through the APi  
   // getImageOfDogBreed pass to breeds image area
   const getImageOfDogBreed = (dogBreed) => {
     //call fetch promise => on .then's
@@ -95,7 +95,7 @@ Filter the API 15 random dogs later
   //function to return n best dog photos = if the number is greater 50 throw an error
   /*Image data: passed as props to randomDog.js ?   ----------------------------------*/
   const handleBestDogImages = (dogIndex) => {
-  return  fetch(`https://dog.ceo/api/breeds/image/random/3`)
+   fetch(`https://dog.ceo/api/breeds/image/random/3`)
       .then((response) => response.json())
       .then((data) => {
         // console.log(data.message)
