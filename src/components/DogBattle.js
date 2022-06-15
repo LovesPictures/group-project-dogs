@@ -10,7 +10,7 @@ export default function DogBattle(props) {
     <div className="DogBattle">
       <h2 className="DogBattle-title">Choose the best dog</h2>
       <div className="DogBattle-images">
-        {/*Calling function Dog, Dog.js API - updated with the image API call   --------*/}
+        {/*Calling function Dog, Dog.js API - updated with the image API call   ----TO do ----*/}
         <Dog
           // Image data: onClick from App.js to Dog.js ----------------------------------------
           //replace index 0 show the new element 
