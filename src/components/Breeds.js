@@ -8,6 +8,7 @@ export default function Breeds(props) {
 
   //  pass this API call as props form the App.js -----------------------------------------------
   /* image data 1 */
+  // dep array of the use effect - 
   useEffect(() => {
     fetch(`https://dog.ceo/api/breed/${dogBreed}/images/random`) /* loading image  */
       .then((response) => response.json())
@@ -22,16 +23,17 @@ export default function Breeds(props) {
     <div className="Breeds">
       <h2 className="Breeds-title">Select a Breed</h2>
 
-      {/* select dropdown  -------------TO do----------------*/}
+      {/* select dropdown  -----------------------------*/}
       <p>
         <select
           className="Breeds-select"
           onChange={(event) => {
             const breed = event.target.value;
-
+            //updating the dogBreed state - call the fetch inside the useEffect because the dogBreed is its dependency
             setDogBreed(breed);
-            //updated 2
-            props.getImageOfSelectedBreed(breed);
+
+            // //updated 2
+            // props.getImageOfSelectedBreed(breed);
             // fetch(`https://dog.ceo/api/breed/${breed}/images/random`) /* New image in response to the onchange event*/
             //   .then((response) => response.json())
             //   .then((dogImagedata) => {

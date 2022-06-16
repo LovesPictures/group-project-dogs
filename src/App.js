@@ -77,7 +77,7 @@ Filter the API 15 random dogs later
         // console.log("getImageOfSelectedBreed");
       });
   };
-//To do random dog dropdown and select a breed are connected through the APi  
+//**To do random dog dropdown and select a breed are connected through the APi  
   // getImageOfDogBreed pass to breeds image area
   const getImageOfDogBreed = (dogBreed) => {
     //call fetch promise => on .then's
